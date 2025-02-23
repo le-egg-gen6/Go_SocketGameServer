@@ -19,7 +19,7 @@ func EnsureBaseLogDirectoryExist(cfg *LoggerConfig) error {
 func GetNextLogFileName(cfg *LoggerConfig) (string, error) {
 	dateStr := time.Now().Format(cfg.FILE_PATTERN)
 
-	baseName := fmt.Sprintf("%s/%s_%s", cfg.BASE_LOG_DIR, "log", dateStr)
+	baseName := fmt.Sprintf("%s_%s", "log", dateStr)
 
 	if err := EnsureBaseLogDirectoryExist(cfg); err != nil {
 		return "", err
@@ -30,11 +30,11 @@ func GetNextLogFileName(cfg *LoggerConfig) (string, error) {
 	for {
 		logFile = fmt.Sprintf("%s_%d.log", baseName, index+1)
 		logPath := filepath.Join(cfg.BASE_LOG_DIR, logFile)
-		if _, err := os.Stat(logFile); os.IsNotExist(err) {
-			return logFile, nil
+		if _, err := os.Stat(logPath); os.IsNotExist(err) {
+			return logPath, nil
 		}
 
-		fileInfo, err := os.Stat(logFile)
+		fileInfo, err := os.Stat(logPath)
 		if err != nil {
 			return "", err
 		}

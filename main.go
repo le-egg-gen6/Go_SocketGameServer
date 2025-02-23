@@ -11,7 +11,7 @@ func main() {
 
 	cfg := config.LoadConfig()
 
-	println(cfg.DB_PASSWORD)
+	log.LogInstance.Info(cfg.DB_PASSWORD)
 
 }
 
