@@ -21,8 +21,11 @@ type Config struct {
 	HTTP_PORT  int
 	SECRET_KEY string
 
-	//Socket Server
-	SOCKET_PORT int
+	//TCP Server
+	TCP_PORT int
+
+	//UDP Server
+	UDP_PORT int
 }
 
 func LoadConfig() *Config {
@@ -46,13 +49,16 @@ func LoadConfig() *Config {
 		REDIS_HOST:     viper.GetString("redis.host"),
 		REDIS_PORT:     viper.GetInt("redis.port"),
 		REDIS_PASSWORD: viper.GetString("redis.password"),
-		REDIS_DB:       viper.GetInt("redis.db"),
+		REDIS_DATABASE: viper.GetInt("redis.db"),
 
 		// HTTP Server
 		HTTP_PORT:  viper.GetInt("http.port"),
 		SECRET_KEY: viper.GetString("http.secret_key"),
 
-		// Socket Server
-		SOCKET_PORT: viper.GetInt("socket.port"),
+		// TCP Server
+		TCP_PORT: viper.GetInt("socket.port"),
+
+		//UDP Server
+		UDP_PORT: viper.GetInt("socket.port"),
 	}
 }
