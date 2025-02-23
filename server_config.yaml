@@ -1,0 +1,13 @@
+database:
+  username: "admin"
+  password: "admin"
+  host: "localhost"
+  port: 27017
+  name: "test"
+
+http:
+  port: 8045
+  secret_key: "LeDepTraiVaizzz"
+
+socket:
+  port: 11110
