@@ -11,6 +11,12 @@ type Config struct {
 	DB_HOST     string
 	DB_PORT     int
 
+	//Redis
+	REDIS_HOST     string
+	REDIS_PORT     int
+	REDIS_PASSWORD string
+	REDIS_DATABASE int
+
 	//Http Server
 	HTTP_PORT  int
 	SECRET_KEY string
@@ -35,6 +41,12 @@ func LoadConfig() *Config {
 		DB_NAME:     viper.GetString("database.name"),
 		DB_HOST:     viper.GetString("database.host"),
 		DB_PORT:     viper.GetInt("database.port"),
+
+		//Redis
+		REDIS_HOST:     viper.GetString("redis.host"),
+		REDIS_PORT:     viper.GetInt("redis.port"),
+		REDIS_PASSWORD: viper.GetString("redis.password"),
+		REDIS_DB:       viper.GetInt("redis.db"),
 
 		// HTTP Server
 		HTTP_PORT:  viper.GetInt("http.port"),

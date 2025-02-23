@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go_game_server/cache/redis"
 	"go_game_server/config"
 	"go_game_server/utils/log"
 )
@@ -11,10 +12,12 @@ func main() {
 
 	cfg := config.LoadConfig()
 
-	log.LogInstance.Info(cfg.DB_PASSWORD)
+	//Redis
+	redis.InitializeRedisInstance(cfg)
 
 }
 
 func CleanupUnfinishedTask() {
+	redis.CloseConnection()
 	log.CleanupQueuedLogs()
 }
